@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:50:10 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:09:15 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,30 @@ int	check_empty_lines_map(t_game *game)
 	return (0);
 }
 
-int	check_holes(t_game *game)
+int	check_holes(t_game *game, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = -1;
-	while (game->map[++i])
+	i = 0;
+	while (game->map[i])
 	{
-		j = -1;
-		while (game->map[i][++j])
+		j = 0;
+		while (game->map[i][j])
 		{
 			if (player_or_zero(game->map[i][j]) == 1)
 			{
 				if (i == 0 || j >= (int)ft_strlen(game->map[i - 1])
 					|| game->map[i - 1][j] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
-				if (game->map[i + 1] == NULL || j >= (int)ft_strlen(game->map[i + 1])
-					|| game->map[i + 1][j] == ' ')
+				if (game->map[i + 1] == NULL || j >= (int)ft_strlen(game->map[i
+							+ 1]) || game->map[i + 1][j] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
 				if (j == 0 || game->map[i][j - 1] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
 				if (game->map[i][j + 1] == '\0' || game->map[i][j + 1] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
 			}
+			j++;
 		}
+		i++;
 	}
 	return (0);
 }

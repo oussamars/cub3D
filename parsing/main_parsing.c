@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 10:52:48 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:06:24 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	parse_color(char *str)
 
 int	pars_map(t_game *game)
 {
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	if (open_file(game) == 1)
 		return (1);
 	read_map(game);
@@ -49,7 +54,7 @@ int	pars_map(t_game *game)
 		return (1);
 	if (check_surrounded_walls(game) == 1)
 		return (1);
-	if (check_holes(game) == 1)
+	if (check_holes(game, i, j) == 1)
 		return (1);
 	check_characters(game);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:22 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:52:21 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:06:00 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		ft_bzero(void *s, size_t n);
 char		*ft_strncpy(char *dst, const char *src, size_t n);
 int			ft_atoi(char *str);
 int			check_empty_lines_map(t_game *game);
-int			check_holes(t_game *game);
+int			check_holes(t_game *game, int i, int j);
 int			fill_informations(t_game *game);
 int			check_characters(t_game *game);
 char		*ft_strtrim(char *str);
