@@ -1,4 +1,4 @@
-#include "cube.h"
+#include "../cube.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -82,25 +82,57 @@ int	ft_atoi(char *str)
 	return ((int)result);
 }
 
-char *ft_strtrim(char *str)
+static char	*ft_strcpy(char *dst, const char *src)
 {
-    int i = 0;
-    int len;
-    char *trimmed;
+	size_t	i;
 
-    if (str == NULL)
-        return (NULL);
-        
-    while (str[i] && str[i] == ' ')
-        i++;
-
-    len = ft_strlen(str + i);
-    trimmed = malloc(len + 1);
-    if (trimmed == NULL)
-        return (NULL);
-
-    strcpy(trimmed, str + i);//jib dialk
-    
-    return (trimmed);
+	if (!dst || !src)
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }
 
+char	*ft_strtrim(char *str)
+{
+	int		i;
+	int		len;
+	char	*trimmed;
+
+	i = 0;
+	if (str == NULL)
+		return (NULL);
+	while (str[i] && str[i] == ' ')
+		i++;
+	len = ft_strlen(str + i);
+	trimmed = malloc(len + 1);
+	if (trimmed == NULL)
+		return (NULL);
+	ft_strcpy(trimmed, str + i);
+	return (trimmed);
+}
+
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	size_t	i;
+
+	if (!dst || !src)
+		return (NULL);
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
+}

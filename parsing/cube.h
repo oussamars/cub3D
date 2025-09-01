@@ -41,6 +41,7 @@ void free_split(char **array, size_t j);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 int	ft_strcmp(char *s1, char *s2);
 void	ft_bzero(void *s, size_t n);
+char	*ft_strncpy(char *dst, const char *src, size_t n);
 int	ft_atoi(char *str);
 int check_empty_lines_map(t_game *game);
 int check_holes(t_game *game);

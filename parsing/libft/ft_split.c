@@ -1,9 +1,9 @@
-#include "cube.h"
+#include "../cube.h"
 
-static int count_word(char const *s, char c)
+static int	count_word(char const *s, char c)
 {
-	size_t i;
-	size_t count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -21,11 +21,11 @@ static int count_word(char const *s, char c)
 	return (count);
 }
 
-static char *ft_copy(char const *s, char c)
+static char	*ft_copy(char const *s, char c)
 {
-	size_t len;
-	char *array;
-	size_t i;
+	size_t	len;
+	char	*array;
+	size_t	i;
 
 	len = 0;
 	while (s[len] != c && s[len] != '\0')
@@ -43,7 +43,7 @@ static char *ft_copy(char const *s, char c)
 	return (array);
 }
 
-void free_split(char **array, size_t j)
+void	free_split(char **array, size_t j)
 {
 	while (j > 0)
 	{
@@ -53,10 +53,10 @@ void free_split(char **array, size_t j)
 	free(array);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	size_t j;
-	char **array;
+	size_t	j;
+	char	**array;
 
 	if (s == NULL)
 		return (NULL);

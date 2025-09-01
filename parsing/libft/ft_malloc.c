@@ -1,4 +1,4 @@
-// #include "cube.h"
+// #include "../cube.h"
 
 // void add_alloc(t_alloc **head, char *content)
 // {
@@ -8,7 +8,7 @@
 //     if (*head == NULL)
 //     {
 //         *head = new;
-//         return;
+//         return ;
 //     }
 //     t_alloc *current = *(head);
 //     while (current->next)
@@ -38,7 +38,7 @@
 //         if (!alloc)
 //         {
 //             lstclear(head);
-//             return NULL;
+//             return (NULL);
 //         }
 //         add_alloc(&head, alloc);
 //         return (alloc);

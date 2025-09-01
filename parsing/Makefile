@@ -1,12 +1,12 @@
 SRCS =	main_parsing.c config.c file_checker.c map_checker.c read_map.c \
-		ft_split.c libft_functions.c \
+		libft/ft_split.c libft/helper_functions.c \
 		../get_next_line/get_next_line.c \
 		../get_next_line/get_next_line_utils.c \
 
 CC = cc
 
-# CFLAGS = -Wall -Werror -Wextra -Iminilibx-linux
-CFLAGS = -Iminilibx-linux
+CFLAGS = -Wall -Werror -Wextra -Iminilibx-linux
+# CFLAGS = -Iminilibx-linux
 
 NAME = Cub3D
 
