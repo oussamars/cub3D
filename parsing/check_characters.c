@@ -26,6 +26,22 @@ int	player_or_zero(char c)
 	return (0);
 }
 
+int	is_valid_map_line(char *line)
+{
+    int	j;
+
+    j = 0;
+    while (line[j] && line[j] != '\n')
+    {
+        if (line[j] != '0' && line[j] != '1' && line[j] != ' '
+            && line[j] != 'N' && line[j] != 'S' && line[j] != 'E'
+            && line[j] != 'W')
+            return (0);
+        j++;
+    }
+    return (1);
+}
+
 int	check_characters(t_game *game)
 {
 	int	count_orientation_caracter;
@@ -52,5 +68,16 @@ int	check_characters(t_game *game)
 	}
 	if (count_orientation_caracter != 1)
 		return (perror("Error\nOrientation character\n"), 1);
+	return (0);
+}
+
+int	open_file(t_game *game)
+{
+	game->fd = open(game->map_file_name, O_RDONLY);
+	if (game->fd < 0)
+	{
+		perror("Error\nOpening the map file\n");
+		return (1);
+	}
 	return (0);
 }

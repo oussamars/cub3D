@@ -60,5 +60,6 @@ void		read_map(t_game *game);
 int			player_or_zero(char c);
 int			check_surrounded_walls(t_game *game);
 int			parse_color(char *str);
+int			is_valid_map_line(char *line);
 
 #endif
