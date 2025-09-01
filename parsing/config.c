@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:40 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:12:07 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/01 13:08:12 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	fill_informations(t_game *game)
 	int		i;
 	char	*line;
 	char	*trimmed;
-	char **split;
+	char	**split;
 
 	i = 0;
 	trimmed = NULL;
