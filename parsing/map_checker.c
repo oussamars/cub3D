@@ -34,22 +34,22 @@ int	check_holes(t_game *game)
 	i = -1;
 	while (game->map[++i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
 			if (player_or_zero(game->map[i][j]) == 1)
 			{
-				if (i == 0 || game->map[i - 1][j] == ' '
-					|| j > (int)ft_strlen(game->map[i - 1]))
+				if (i == 0 || j >= (int)ft_strlen(game->map[i - 1])
+					|| game->map[i - 1][j] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
-				if (game->map[i + 1] == NULL || game->map[i + 1][j] == ' ')
+				if (game->map[i + 1] == NULL || j >= (int)ft_strlen(game->map[i + 1])
+					|| game->map[i + 1][j] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
 				if (j == 0 || game->map[i][j - 1] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
 				if (game->map[i][j + 1] == '\0' || game->map[i][j + 1] == ' ')
 					return (perror("Error\nMap is not closed\n"), 1);
 			}
-			j++;
 		}
 	}
 	return (0);
