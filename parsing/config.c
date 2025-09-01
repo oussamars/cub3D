@@ -72,12 +72,19 @@ int	fill_informations(t_game *game)
 	int		i;
 	char	*line;
 	char	*trimmed;
+	char **split;
 
 	i = 0;
 	trimmed = NULL;
 	while (game->map_informations[i])
 	{
 		line = game->map_informations[i];
+		if (ft_strlen(line) > 0)
+		{
+			split = ft_split(line, ' ');
+			if (split[0] == NULL || split[1] == NULL || split[2] != NULL)
+				return (perror("Error\nConfiguration wrong format\n"), 1);
+		}
 		if (check_textures(game, line, i, trimmed) == 1)
 			return (1);
 		i++;

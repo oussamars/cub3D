@@ -47,7 +47,6 @@ void	number_of_lines(t_game *game)
 			{
 				if (map_found == 1)
 				{
-					printf("the line number is %d", i);
 					perror("Error\nMap should be the last element\n");
 					free(line);
 					exit(1);

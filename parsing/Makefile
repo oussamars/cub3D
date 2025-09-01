@@ -5,7 +5,8 @@ SRCS =	main_parsing.c config.c file_checker.c map_checker.c read_map.c check_cha
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -Iminilibx-linux
+# CFLAGS = -Wall -Werror -Wextra -Iminilibx-linux
+CFLAGS = -Wall -Werror -Wextra 
 
 NAME = Cub3D
 
@@ -17,10 +18,11 @@ OBJECTS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-MLX = -Lminilibx-linux -lmlx -lXext -lX11
+# MLX = -Lminilibx-linux -lmlx -lXext -lX11
 
 $(NAME) : $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+# 	$(CC) $(CFLAGS) $(OBJECTS) $(MLX) -o $(NAME)
 
 clean :
 	rm -f $(OBJECTS)
