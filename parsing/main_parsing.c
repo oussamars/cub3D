@@ -1,10 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_parsing.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
+/*   Updated: 2025/09/01 10:52:48 by oboussel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 
 int	parse_color(char *str)
 {
 	char	**color_array;
+	int		c0;
+	int		c1;
+	int		c2;
+	int		color;
 
-	int c0, c1, c2, color;
 	color_array = ft_split(str, ',');
 	if (color_array == NULL)
 		return (perror("Error\nInvalid color format\n"), -1);
