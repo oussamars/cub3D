@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_parsing.c                                     :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 15:06:24 by oboussel         ###   ########.fr       */
+/*   Created: 2025/09/02 10:56:24 by imeftah-          #+#    #+#             */
+/*   Updated: 2025/09/02 10:56:39 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
+
 
 int	parse_color(char *str)
 {
@@ -79,24 +80,4 @@ void	initialize_struct(t_game *game, char *filename)
 	game->floor_color = -1;
 	game->ceiling_color = -1;
 	game->map_file_name = filename;
-}
-
-int	main(int ac, char **av)
-{
-	t_game	*game;
-
-	if (ac != 2)
-	{
-		perror("Error\nYou should enter the right parameters\n");
-		return (1);
-	}
-	if (check_file_name(av[1]) == 1)
-		return (1);
-	game = malloc(sizeof(t_game));
-	if (game == NULL)
-		return (perror("Error\nMemory allocation failed\n"), 1);
-	initialize_struct(game, av[1]);
-	if (pars_map(game) == 1)
-		return (1);
-	return (0);
 }

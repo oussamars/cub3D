@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:40 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 13:08:12 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:56:06 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 int	check_color(t_game *game, char *line, int i, char *trimmed)
 {

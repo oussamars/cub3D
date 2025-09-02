@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:34 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:01:33 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:51:18 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 void	fill_config(t_game *game, char *line, int *j, int line_size)
 {
@@ -64,7 +64,7 @@ void	read_map(t_game *game)
 	j = 0;
 	number_of_lines(game);
 	game->map = malloc(sizeof(char *) * (game->number_lines - game->line_map
-				+ 1));
+				+ 2));
 	game->map_informations = malloc(sizeof(char *) * (game->line_map + 1));
 	loop_read_map(game, &j, &i);
 	game->map_informations[j] = NULL;

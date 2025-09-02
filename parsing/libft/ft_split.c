@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 10:02:33 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:01:42 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../../cube.h"
 
 static int	count_word(char const *s, char c)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:05:03 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:14:33 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:57:46 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../../cube.h"
 
 static char	*ft_strcpy(char *dst, const char *src)
 {
@@ -28,17 +28,6 @@ static char	*ft_strcpy(char *dst, const char *src)
 	return (dst);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
-}
 
 char	*ft_strtrim(char *str)
 {

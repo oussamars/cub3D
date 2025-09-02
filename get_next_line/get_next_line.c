@@ -3,103 +3,119 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 17:29:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 10:02:23 by oboussel         ###   ########.fr       */
+/*   Created: 2024/11/26 09:39:19 by imeftah-          #+#    #+#             */
+/*   Updated: 2024/11/26 11:47:00 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../cube.h"
 
-static char	*join_free(char *stock, char *buffer)
+static char	*ft_strjoin(char *s1, char *s2)
+{
+	size_t	len;
+	char	*str;
+
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcpy(str + ft_strlen(s1), s2, ft_strlen(s2) + 1);
+	return (str);
+}
+
+static ssize_t	fill_holder(int fd, char **holder)
 {
 	char	*temp;
+	char	*ggg;
+	ssize_t	b_read;
 
-	temp = ft_strjoin(stock, buffer);
-	free(stock);
-	stock = NULL;
-	return (temp);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	b_read = 1;
+	while (b_read > 0)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)(s + i));
-		i++;
-	}
-	if ((unsigned char)c == '\0')
-		return ((char *)(s + i));
-	return (NULL);
-}
-
-static char	*ft_join(char *stock, int fd)
-{
-	char	*buffer;
-	ssize_t	bytes_read;
-
-	if (!stock)
-		stock = ft_strdup("");
-	buffer = malloc((size_t)BUFFER_SIZE + 1);
-	if (buffer == NULL)
-		return (NULL);
-	bytes_read = 1;
-	while (bytes_read > 0)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
-		{
-			free(stock);
-			free(buffer);
-			return (NULL);
-		}
-		buffer[bytes_read] = '\0';
-		stock = join_free(stock, buffer);
-		if (ft_strchr(buffer, '\n'))
+		temp = malloc(BUFFER_SIZE + 1);
+		if (!temp)
+			return (-1);
+		b_read = read(fd, temp, BUFFER_SIZE);
+		if (b_read < 0)
+			return (free(temp), -1);
+		temp[b_read] = '\0';
+		ggg = ft_strjoin(*holder, temp);
+		if (!ggg)
+			return (free(temp), -1);
+		free(*holder);
+		*holder = ggg;
+		free(temp);
+		if (ft_strchr(*holder, '\n') != -1)
 			break ;
 	}
-	free(buffer);
-	return (stock);
+	return (b_read);
 }
 
-char	*free_if_empty(char *str)
+static char	*get_line(char *holder)
 {
-	if (str && str[0] == '\0')
+	char	*line;
+	int		i;
+
+	i = 0;
+	while (holder[i] != '\n' && holder[i])
+		i++;
+	if (holder[i] == '\n')
+		i++;
+	line = ft_substr(holder, 0, i);
+	return (line);
+}
+
+static char	*rest(char *holder)
+{
+	char	*rest;
+	int		i;
+	int		len;
+
+	i = 0;
+	while (holder[i] != '\n' && holder[i] != '\0')
+		i++;
+	if (holder[i] == '\n')
+		i++;
+	len = ft_strlen(holder) - i;
+	if (len <= 0)
 	{
-		free(str);
-		str = NULL;
+		free(holder);
+		return (NULL);
 	}
-	return (str);
+	rest = ft_substr(holder, i, len);
+	free(holder);
+	return (rest);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*stock;
-	char		*res;
-	char		*temp;
-	int			i;
+	static char	*holder;
+	char		*line;
+	ssize_t		b_read;
 
-	i = 0;
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stock = ft_join(stock, fd);
-	if (stock == NULL || stock[0] == '\0')
+	b_read = fill_holder(fd, &holder);
+	if (b_read < 0 || !holder || holder[0] == '\0')
 	{
-		free(stock);
-		stock = NULL;
-		return (NULL);
+		free(holder);
+		return (holder = NULL);
 	}
-	while (stock[i] && stock[i] != '\n')
-		i++;
-	res = ft_substr(stock, 0, i + 1);
-	temp = ft_substr(stock, i + 1, ft_strlen(stock) - i + 1);
-	free(stock);
-	stock = NULL;
-	stock = free_if_empty(temp);
-	return (res);
+	line = get_line(holder);
+	if (!line)
+	{
+		free(holder);
+		return (holder = NULL);
+	}
+	holder = rest(holder);
+	return (line);
 }
