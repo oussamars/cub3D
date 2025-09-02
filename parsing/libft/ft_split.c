@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 10:02:33 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:01:12 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,13 @@ void	free_double_ptr(char **split)
 	int	i;
 
 	i = 0;
+	if (split == NULL)
+		return;
 	while (split[i])
-		free(split[i++]);
+	{
+		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
 	free(split);
-	split = NULL;
 }

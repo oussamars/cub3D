@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 15:06:24 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:07:23 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int ac, char **av)
 	}
 	if (check_file_name(av[1]) == 1)
 		return (1);
-	game = malloc(sizeof(t_game));
+	game = ft_malloc(sizeof(t_game), ALLOC);
 	if (game == NULL)
 		return (perror("Error\nMemory allocation failed\n"), 1);
 	initialize_struct(game, av[1]);

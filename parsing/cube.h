@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:22 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 15:06:00 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:17:43 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 
 # define FREE 1
 # define ALLOC 0
+
+typedef struct s_alloc
+{
+	void			*pointer;
+	struct s_alloc	*next;
+}					t_alloc;
+
 
 typedef struct s_game
 {
@@ -61,5 +68,7 @@ int			player_or_zero(char c);
 int			check_surrounded_walls(t_game *game);
 int			parse_color(char *str);
 int			is_valid_map_line(char *line);
+void 		*ft_malloc(size_t bytes, int action);
+
 
 #endif

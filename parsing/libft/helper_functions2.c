@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:05:03 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:14:33 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:22:32 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strtrim(char *str)
 	while (str[i] && str[i] == ' ')
 		i++;
 	len = ft_strlen(str + i);
-	trimmed = malloc(len + 1);
+	trimmed = ft_malloc(len + 1, ALLOC);
 	if (trimmed == NULL)
 		return (NULL);
 	ft_strcpy(trimmed, str + i);
