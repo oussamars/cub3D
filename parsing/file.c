@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:26:22 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:37:46 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,3 @@ void	initialize_struct(t_game *game, char *filename)
 	game->ceiling_color = -1;
 	game->map_file_name = filename;
 }
-<<<<<<< HEAD:parsing/main_parsing.c
-
-int	main(int ac, char **av)
-{
-	t_game	*game;
-
-	if (ac != 2)
-	{
-		perror("Error\nYou should enter the right parameters\n");
-		return (1);
-	}
-	if (check_file_name(av[1]) == 1)
-		return (1);
-	game = ft_malloc(sizeof(t_game), ALLOC);
-	if (game == NULL)
-		return (perror("Error\nMemory allocation failed\n"), 1);
-	initialize_struct(game, av[1]);
-	if (pars_map(game) == 1)
-		return (1);
-	return (0);
-}
-=======
->>>>>>> 42b96418f0541f211dcb7839d4ac3c436df153b0:parsing/file.c

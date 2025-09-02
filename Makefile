@@ -24,8 +24,8 @@ SRCS = ray_casting/main.c \
 		parsing/file.c \
 		parsing/read_map.c 
 
-#  -Wall -Wextra -Werror
-FLAGS =  -fsanitize=address -g3
+# FLAGS =  -fsanitize=address -g3
+# FLAGS =  -Wall -Wextra -Werror
 OBJS = $(SRCS:.c=.o)
 NAME = cube
 

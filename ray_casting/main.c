@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 13:32:00 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:02:26 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char *av[])
 	t_cube	*data;
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
+	game = ft_malloc(sizeof(t_game), ALLOC);
 	if (parsing(game, ac, av) == 1)
 		return (1);
 	data = ft_malloc(sizeof(t_cube), ALLOC);
