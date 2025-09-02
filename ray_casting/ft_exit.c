@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:56:09 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 16:04:15 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:07:11 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	free_map(char **map)
 
 int	ft_exit(t_cube *data)
 {
-	// if (data->map)
-	// 	free_map(data->map);
 	if (data->mlx)
 	{
 		if (data->img)
