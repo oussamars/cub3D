@@ -6,11 +6,11 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:40 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:10:04 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:24:59 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 int	check_color(t_game *game, char *line, int i, char *trimmed)
 {

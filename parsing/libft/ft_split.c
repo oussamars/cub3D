@@ -6,11 +6,11 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:01:12 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:28:22 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../../cube.h"
 
 static int	count_word(char const *s, char c)
 {

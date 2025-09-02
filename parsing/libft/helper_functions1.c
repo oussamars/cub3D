@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:36 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 11:14:27 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:02:25 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../../cube.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

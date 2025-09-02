@@ -6,11 +6,11 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:05:03 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 14:22:32 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:24:50 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube.h"
+#include "../../cube.h"
 
 static char	*ft_strcpy(char *dst, const char *src)
 {
@@ -28,17 +28,6 @@ static char	*ft_strcpy(char *dst, const char *src)
 	return (dst);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
-}
 
 char	*ft_strtrim(char *str)
 {

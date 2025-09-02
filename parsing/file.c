@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_parsing.c                                     :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:07:23 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:26:22 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
+
 
 int	parse_color(char *str)
 {
@@ -80,6 +81,7 @@ void	initialize_struct(t_game *game, char *filename)
 	game->ceiling_color = -1;
 	game->map_file_name = filename;
 }
+<<<<<<< HEAD:parsing/main_parsing.c
 
 int	main(int ac, char **av)
 {
@@ -100,3 +102,5 @@ int	main(int ac, char **av)
 		return (1);
 	return (0);
 }
+=======
+>>>>>>> 42b96418f0541f211dcb7839d4ac3c436df153b0:parsing/file.c
