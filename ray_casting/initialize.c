@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:12:43 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 13:31:20 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:58:01 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,12 @@ int	get_window_size(t_cube *data, char *path)
 	y = 0;
 	while (data->map[y])
 	{
-		data->width = ft_strlen(data->map[0]);
+		tmp = ft_strlen(data->map[y]);
+		if (tmp > data->width)
+			data->width = tmp;
 		data->height++;
 		y++;
 	}
-	return (0);
-}
-
-int	store_map(t_cube *data, char *path)
-{
-	int		fd;
-	char	*buffer;
-	int		i;
-
-	i = 0;
-	data->map = malloc((data->height + 1) * sizeof(char *));
-	if (!data->map)
-		return (ERROR);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		return (ERROR);
-	while (1)
-	{
-		buffer = get_next_line(fd);
-		if (!buffer)
-			break ;
-		data->map[i++] = buffer;
-	}
-	data->map[i] = NULL;
-	close(fd);
 	return (0);
 }
 
@@ -80,6 +57,18 @@ void	load_textures(t_cube *data)
 	}
 }
 
+double	angle_direction(char direction)
+{
+	if (direction == 'N')
+		return (270 * (M_PI / 180));
+	if (direction == 'S')
+		return (90 * (M_PI / 180));
+	if (direction == 'E')
+		return (0);
+	else
+		return (180 * (M_PI / 180));
+}
+
 void	initialize(t_cube *data, char *path)
 {
 	int	i;
@@ -88,7 +77,7 @@ void	initialize(t_cube *data, char *path)
 	if (get_window_size(data, path) == ERROR)
 		ft_exit(data);
 	data->fov = 60 * (M_PI / 180);
-	data->angle = 0 * (M_PI / 180);
+	data->angle = angle_direction(data->game->orientation_character);
 	data->px = data->game->player_x * TILE;
 	data->py = data->game->player_y * TILE;
 	data->r_speed = 5 * (M_PI / 180);

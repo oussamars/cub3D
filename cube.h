@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 12:03:57 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:52:17 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define MOVE_SPEED 10
 # define BUFFER_SIZE 10
 # define M_PI 3.14159265358979323846
-# define MOVE 30
+# define MOVE 10
 
 typedef struct s_alloc
 {
