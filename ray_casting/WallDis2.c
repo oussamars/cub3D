@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:14:14 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/01 11:55:55 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/04 09:58:58 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,14 @@ double	distance(t_cube *data)
 
 void	wall_hit_cords(t_cube *data)
 {
-	while (data->dis->hwallhitx >= 0 && data->dis->hwallhitx <= data->width
-		* TILE && data->dis->hwallhity >= 0
-		&& data->dis->hwallhity <= data->height * TILE)
+	while (1)
 	{
 		if (colision(data, data->dis->hwallhitx, data->dis->hwallhity) == -1)
 			break ;
 		data->dis->hwallhitx += data->dis->xhstep;
 		data->dis->hwallhity += data->dis->yhstep;
 	}
-	while (data->dis->vwallhitx >= 0 && data->dis->vwallhitx <= data->width
-		* TILE && data->dis->vwallhity >= 0
-		&& data->dis->vwallhity <= data->height * TILE)
+	while (1)
 	{
 		if (colision(data, data->dis->vwallhitx, data->dis->vwallhity) == -1)
 			break ;

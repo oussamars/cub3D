@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 16:43:29 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:28:50 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,13 @@ int	main(int ac, char *av[])
 		return (1);
 	data = ft_malloc(sizeof(t_cube), ALLOC);
 	data->game = game;
-	initialize(data, av[1]);
+	if (parsing(game, ac, av) == 1)
+		ft_exit(data);
+	initialize(data);
 	render_all(data);
 	mlx_hook(data->win, 17, 0, ft_exit, data);
-	mlx_hook(data->win, 2, 1L << 0, key_check, data);
+	mlx_hook(data->win, 2, 1L << 0, key_press, data);
+	mlx_hook(data->win, 3, 1L << 1, key_release, data);
+	mlx_loop_hook(data->mlx, key_check, data);
 	mlx_loop(data->mlx);
 }

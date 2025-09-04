@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/04 16:12:32 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:15:08 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <unistd.h>
 
 # define TILE 60
+# define TRUE 1
+# define FALSE 0
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 600
 # define TEXTURE_TILE 256
@@ -31,10 +33,9 @@
 # define ERROR -1
 # define FREE 1
 # define ALLOC 0
-# define MOVE_SPEED 10
 # define BUFFER_SIZE 10
 # define M_PI 3.14159265358979323846
-# define MOVE 10
+# define MOVE 6
 
 typedef struct s_alloc
 {
@@ -45,37 +46,37 @@ typedef struct s_alloc
 typedef struct s_game
 {
 	char			**map;
-	char			**map_informations;
-	int				fd;
-	int				number_lines;
-	char			*map_file_name;
 	char			orientation_character;
-	int				player_x;
-	int				player_y;
-	int				line_map;
+	char			**map_informations;
+	char			*map_file_name;
 	char			*north_texture;
 	char			*south_texture;
 	char			*west_texture;
 	char			*east_texture;
-	int				floor_color;
+	int				number_lines;
 	int				ceiling_color;
+	int				floor_color;
+	int				player_x;
+	int				player_y;
+	int				line_map;
+	int				fd;
 
 }					t_game;
 
 typedef struct s_dis_tools
 {
-	double			ahx;
-	double			ahy;
-	double			avx;
-	double			avy;
-	double			xhstep;
-	double			yhstep;
-	double			xvstep;
-	double			yvstep;
 	double			hwallhitx;
 	double			hwallhity;
 	double			vwallhitx;
 	double			vwallhity;
+	double			xhstep;
+	double			yhstep;
+	double			xvstep;
+	double			yvstep;
+	double			ahx;
+	double			ahy;
+	double			avx;
+	double			avy;
 }					t_dis_tools;
 
 typedef struct s_texture
@@ -84,39 +85,49 @@ typedef struct s_texture
 	char			*addr[4];
 	int				width[4];
 	int				height[4];
+	int				endian[4];
 	int				len[4];
 	int				bpp[4];
-	int				endian[4];
 	int				tex_x;
 	int				index;
 }					t_texture;
 
+typedef struct s_keys
+{
+	int				rotate_right;
+	int				rotate_left;
+	int				right;
+	int				left;
+	int				down;
+	int				up;
+}					t_keys;
+
 typedef struct s_cube
 {
 	t_dis_tools		*dis;
-	t_texture		t_text;
 	t_game			*game;
+	t_texture		t_text;
+	t_keys			key;
+	double			wallstriph;
+	double			r_speed;
+	double			walldis;
+	double			angle;
+	double			fov;
+	double			px;
+	double			py;
+	int				hit_check;
+	int 			line_len;
+	int				endian;
+	int				height;
+	int				bpp;
 	char			*addr;
 	char			**map;
 	void			*mlx;
 	void			*win;
 	void			*img;
-	double			fov;
-	double			r_speed;
-	double			angle;
-	double			walldis;
-	double			wallstriph;
-	double			px;
-	double			py;
-	int				hit_check;
-	int				width;
-	int				height;
-	int				bpp;
-	int				line_len;
-	int				endian;
 }					t_cube;
 
-void				initialize(t_cube *data, char *path);
+void				initialize(t_cube *data);
 void				*ft_malloc(size_t bytes, int action);
 void				wall_hit_cords(t_cube *data);
 void				my_pixel_put(t_cube *data, int x, int y,
@@ -129,7 +140,7 @@ void				get_texture_info(t_cube *data, double angle);
 double				normalizeangle(double angle);
 double				distance(t_cube *data);
 unsigned int		get_color(t_cube *data, int index, int tex_x, int tex_y);
-int					key_check(int key, void *ptr);
+int					key_check(void *ptr);
 int					colision(t_cube *data, int px, int py);
 int					render_ddmap(t_cube *data);
 int					index_tex(t_cube *data, double angle);
@@ -138,7 +149,8 @@ int					lookup(double angle);
 int					lookdown(double angle);
 int					right(double angle);
 int					left(double angle);
-
+int					key_press(int key, void *data);
+int					key_release(int key, void *data);
 // gnl functions!!
 
 void				ft_bzero(void *address, size_t len);

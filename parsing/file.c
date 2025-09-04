@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/04 16:13:11 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:14:54 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	pars_map(t_game *game)
 		return (1);
 	if (check_holes(game, i, j) == 1)
 		return (1);
-	check_characters(game);
+	if (check_characters(game) == 1)
+		return (1);
 	return (0);
 }
 
