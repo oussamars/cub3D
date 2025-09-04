@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   puting_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:13:46 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 11:53:25 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:26:21 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ void	render_all(t_cube *data)
 			&data->endian);
 	draw_fov(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mini_map(data);
 }

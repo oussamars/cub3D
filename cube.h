@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/02 14:52:17 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:11:06 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,10 @@ int					parse_color(char *str);
 int					pars_map(t_game *game);
 int					check_file_name(char *filename);
 void				initialize_struct(t_game *game, char *filename);
+
+//minimap
+
+// void    draw_rectangle(t_cube *data, int width, int height, int color);
+void    mini_map(t_cube *data);
 
 #endif

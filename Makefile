@@ -22,7 +22,7 @@ SRCS = ray_casting/main.c \
 		parsing/libft/helper_functions1.c \
 		parsing/libft/helper_functions2.c \
 		parsing/file.c \
-		parsing/read_map.c 
+		parsing/read_map.c parsing/minimap.c
 
 # FLAGS =  -fsanitize=address -g3
 # FLAGS =  -Wall -Wextra -Werror
