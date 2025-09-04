@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:05:03 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:24:50 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:53:11 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static char	*ft_strcpy(char *dst, const char *src)
 	dst[i] = '\0';
 	return (dst);
 }
-
 
 char	*ft_strtrim(char *str)
 {

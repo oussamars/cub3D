@@ -67,7 +67,8 @@ void	read_map(t_game *game)
 	number_of_lines(game);
 	game->map = ft_malloc(sizeof(char *) * (game->number_lines - game->line_map
 				+ 2), ALLOC);
-	game->map_informations = ft_malloc(sizeof(char *) * (game->line_map + 1), ALLOC);
+	game->map_informations = ft_malloc(sizeof(char *) * (game->line_map + 1),
+			ALLOC);
 	loop_read_map(game, &j, &i);
 	close(game->fd);
 }

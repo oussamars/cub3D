@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/03 13:11:06 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:12:32 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,9 +175,8 @@ int					pars_map(t_game *game);
 int					check_file_name(char *filename);
 void				initialize_struct(t_game *game, char *filename);
 
-//minimap
+// minimap
 
-// void    draw_rectangle(t_cube *data, int width, int height, int color);
-void    mini_map(t_cube *data);
+void				mini_map(t_cube *data);
 
 #endif

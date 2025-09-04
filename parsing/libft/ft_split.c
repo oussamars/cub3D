@@ -99,7 +99,7 @@ void	free_double_ptr(char **split)
 
 	i = 0;
 	if (split == NULL)
-		return;
+		return ;
 	while (split[i])
 	{
 		free(split[i]);

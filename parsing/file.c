@@ -6,12 +6,11 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:37:46 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:13:11 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
-
 
 int	parse_color(char *str)
 {
