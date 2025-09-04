@@ -6,27 +6,11 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:14:06 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/01 11:34:05 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:09:07 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
-
-void	horizontal_gridline(t_cube *data)
-{
-	data->dis->ahx = data->px;
-	data->dis->ahy = data->py;
-	data->dis->xhstep = INFINITY;
-	data->dis->yhstep = INFINITY;
-}
-
-void	vertical_gridline(t_cube *data)
-{
-	data->dis->avx = data->px;
-	data->dis->avy = data->py;
-	data->dis->xvstep = INFINITY;
-	data->dis->yvstep = INFINITY;
-}
 
 void	first_hori_intersect(t_cube *data, double angle)
 {
@@ -75,14 +59,19 @@ void	first_vert_intersect(t_cube *data, double angle)
 
 void	find_distance(t_cube *data, double angle)
 {
-	if (fabs(sin(angle)) < 1e-6) // if the grid line vertical
-		horizontal_gridline(data);
-	else
-		first_hori_intersect(data, angle);
-	if (fabs(cos(angle)) < 1e-6) // if the grid line horizontal
-		vertical_gridline(data);
-	else
-		first_vert_intersect(data, angle);
+	first_hori_intersect(data, angle);
+	first_vert_intersect(data, angle);
 	wall_hit_cords(data);
 	data->walldis = distance(data);
+}
+
+void	wallstripheight(t_cube *data, double angle)
+{
+	double	pp_dis;
+	double	correcteddistance;
+
+	find_distance(data, angle);
+	correcteddistance = data->walldis * cos(angle - data->angle);
+	pp_dis = ((WIN_WIDTH) / 2) / tan(data->fov / 2);
+	data->wallstriph = (TILE / correcteddistance) * pp_dis;
 }

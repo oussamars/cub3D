@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:37:46 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:17:53 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
-
 
 int	parse_color(char *str)
 {
@@ -57,7 +56,8 @@ int	pars_map(t_game *game)
 		return (1);
 	if (check_holes(game, i, j) == 1)
 		return (1);
-	check_characters(game);
+	if (check_characters(game) == 1)
+		return (1);
 	return (0);
 }
 
