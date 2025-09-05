@@ -116,7 +116,7 @@ typedef struct s_cube
 	double			px;
 	double			py;
 	int				hit_check;
-	int 			line_len;
+	int				line_len;
 	int				endian;
 	int				height;
 	int				bpp;

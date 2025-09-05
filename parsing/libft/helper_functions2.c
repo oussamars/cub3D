@@ -14,26 +14,26 @@
 
 char	*ft_strtrim(char *str)
 {
-    int		start;
-    int		end;
-    int		len;
-    char	*trimmed;
+	int		start;
+	int		end;
+	int		len;
+	char	*trimmed;
 
-    if (str == NULL)
-        return (NULL);
-    start = 0;
-    while (str[start] && str[start] == ' ')
-        start++;
-    end = ft_strlen(str) - 1;
-    while (end > start && str[end] == ' ')
-        end--;
-    len = end - start + 1;
-    trimmed = ft_malloc(len + 1, ALLOC);
-    if (trimmed == NULL)
-        return (NULL);
-    ft_strncpy(trimmed, str + start, len);
-    trimmed[len] = '\0';
-    return (trimmed);
+	if (str == NULL)
+		return (NULL);
+	start = 0;
+	while (str[start] && str[start] == ' ')
+		start++;
+	end = ft_strlen(str) - 1;
+	while (end > start && str[end] == ' ')
+		end--;
+	len = end - start + 1;
+	trimmed = ft_malloc(len + 1, ALLOC);
+	if (trimmed == NULL)
+		return (NULL);
+	ft_strncpy(trimmed, str + start, len);
+	trimmed[len] = '\0';
+	return (trimmed);
 }
 
 char	*ft_strncpy(char *dst, const char *src, size_t n)

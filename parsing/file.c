@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:29 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/05 15:53:44 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:42:06 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	check_file_name(char *filename)
 	if (len < 4 || ft_strcmp((filename + len - 4), ".cub") != 0)
 	{
 		perror("Error\nFile name should end with: .cub\n");
-		ft_malloc(0, FREE);
 		return (1);
 	}
 	return (0);

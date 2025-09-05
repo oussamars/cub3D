@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:26 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/05 15:51:24 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:53:48 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	handle_map_line(t_game *game, int *map_found, int i)
 	}
 }
 
-static void	exit_with_error(char *msg, char *line)
+static void	exit_with_error(char *msg)
 {
 	perror(msg);
 	ft_malloc(0, FREE);
@@ -50,13 +50,12 @@ static void	process_line(t_game *game, char *line, int *map_found, int i)
 		if (is_config_line(line))
 		{
 			if (*map_found == 1)
-				exit_with_error("Error\nMap should be the last element\n",
-					line);
+				exit_with_error("Error\nMap should be the last element\n");
 		}
 		else
 		{
 			if (!is_valid_map_line(line))
-				exit_with_error("Error\nInvalid character in the file\n", line);
+				exit_with_error("Error\nInvalid character in the file\n");
 			handle_map_line(game, map_found, i);
 		}
 	}
@@ -85,5 +84,7 @@ void	number_of_lines(t_game *game)
 		ft_malloc(0, FREE);
 		exit(0);
 	}
-	lseek(game->fd, 0, SEEK_SET);
+	close(game->fd);
+	if (open_file(game) == 1)
+		exit(1);
 }
