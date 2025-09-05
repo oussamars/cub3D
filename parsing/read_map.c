@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:34 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/04 10:17:45 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:55:46 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	loop_read_map(t_game *game, int *j, int *i)
 			fill_config(game, line, j, line_size);
 		else if (line_count >= game->line_map)
 			fill_map(game, line, i, line_size);
-		free(line);
 		line = get_next_line(game->fd);
 	}
 	game->map_informations[*j] = NULL;

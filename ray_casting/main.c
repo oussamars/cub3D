@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/04 10:28:50 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:53:29 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	parsing(t_game *game, int ac, char **av)
 		return (1);
 	initialize_struct(game, av[1]);
 	if (pars_map(game) == 1)
-		return (1);
+		return (close(game->fd), 1);
+	close(game->fd);
 	return (0);
 }
 

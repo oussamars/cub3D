@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_characters.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:52:26 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 18:56:56 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:49:30 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	open_file(t_game *game)
 	if (game->fd < 0)
 	{
 		perror("Error\nOpening the map file\n");
+		ft_malloc(0, FREE);
 		return (1);
 	}
 	return (0);

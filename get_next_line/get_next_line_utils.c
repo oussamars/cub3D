@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:37:37 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/01 11:36:12 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:47:07 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strdup(char *string)
 	stringg = (char *)string;
 	i = 0;
 	len = ft_strlen(stringg);
-	new = malloc((len + 1) * sizeof(char));
+	new = ft_malloc((len + 1) * sizeof(char), ALLOC);
 	if (new == NULL)
 		return (NULL);
 	while (i < len)
@@ -83,7 +83,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (start + len > ft_strlen(s))
 		len = ft_strlen(s) - start;
-	array = malloc((len + 1) * sizeof(char));
+	array = ft_malloc((len + 1) * sizeof(char), ALLOC);
 	if (!array)
 		return (NULL);
 	i = 0;

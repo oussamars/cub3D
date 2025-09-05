@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:28:22 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:48:22 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_copy(char const *s, char c)
 	len = 0;
 	while (s[len] != c && s[len] != '\0')
 		len++;
-	array = malloc((len + 1) * sizeof(char));
+	array = ft_malloc((len + 1) * sizeof(char), ALLOC);
 	if (array == NULL)
 		return (NULL);
 	i = 0;
@@ -55,16 +55,6 @@ static char	*ft_copy(char const *s, char c)
 	return (array);
 }
 
-void	free_split(char **array, size_t j)
-{
-	while (j > 0)
-	{
-		j--;
-		free(array[j]);
-	}
-	free(array);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	j;
@@ -73,7 +63,7 @@ char	**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	j = 0;
-	array = malloc((count_word(s, c) + 1) * sizeof(char *));
+	array = ft_malloc((count_word(s, c) + 1) * sizeof(char *), ALLOC);
 	if (array == NULL)
 		return (NULL);
 	while (*s != '\0')
@@ -84,27 +74,11 @@ char	**ft_split(char const *s, char c)
 		{
 			array[j] = ft_copy(s, c);
 			if (array[j++] == NULL)
-				return (free_split(array, j - 1), NULL);
+				return (NULL);
 			while (*s != c && *s != '\0')
 				s++;
 		}
 	}
 	array[j] = NULL;
 	return (array);
-}
-
-void	free_double_ptr(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (split == NULL)
-		return ;
-	while (split[i])
-	{
-		free(split[i]);
-		split[i] = NULL;
-		i++;
-	}
-	free(split);
 }

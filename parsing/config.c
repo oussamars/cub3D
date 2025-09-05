@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:02:40 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/02 15:24:59 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:00:09 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	fill_informations(t_game *game)
 			if (split[0] == NULL || split[1] == NULL || split[2] != NULL)
 				return (perror("Error\nConfiguration wrong format\n"), 1);
 		}
-		free_double_ptr(split);
 		split = NULL;
 		if (check_textures(game, line, i, trimmed) == 1)
 			return (1);

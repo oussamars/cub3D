@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:39:19 by imeftah-          #+#    #+#             */
-/*   Updated: 2024/11/26 11:47:00 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:58:06 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*ft_strjoin(char *s1, char *s2)
 	if (!s2)
 		return (ft_strdup(s1));
 	len = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc((len + 1) * sizeof(char));
+	str = (char *)ft_malloc((len + 1) * sizeof(char), ALLOC);
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
@@ -41,19 +41,17 @@ static ssize_t	fill_holder(int fd, char **holder)
 	b_read = 1;
 	while (b_read > 0)
 	{
-		temp = malloc(BUFFER_SIZE + 1);
+		temp = ft_malloc(BUFFER_SIZE + 1, ALLOC);
 		if (!temp)
 			return (-1);
 		b_read = read(fd, temp, BUFFER_SIZE);
 		if (b_read < 0)
-			return (free(temp), -1);
+			return (-1);
 		temp[b_read] = '\0';
 		ggg = ft_strjoin(*holder, temp);
 		if (!ggg)
-			return (free(temp), -1);
-		free(*holder);
+			return (-1);
 		*holder = ggg;
-		free(temp);
 		if (ft_strchr(*holder, '\n') != -1)
 			break ;
 	}
@@ -88,11 +86,9 @@ static char	*rest(char *holder)
 	len = ft_strlen(holder) - i;
 	if (len <= 0)
 	{
-		free(holder);
 		return (NULL);
 	}
 	rest = ft_substr(holder, i, len);
-	free(holder);
 	return (rest);
 }
 
@@ -107,14 +103,14 @@ char	*get_next_line(int fd)
 	b_read = fill_holder(fd, &holder);
 	if (b_read < 0 || !holder || holder[0] == '\0')
 	{
-		free(holder);
-		return (holder = NULL);
+		holder = NULL;
+		return (NULL);
 	}
 	line = get_line(holder);
 	if (!line)
 	{
-		free(holder);
-		return (holder = NULL);
+		holder = NULL;
+		return (NULL);
 	}
 	holder = rest(holder);
 	return (line);

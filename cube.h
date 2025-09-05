@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/04 16:15:08 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:00:38 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define ALLOC 0
 # define BUFFER_SIZE 10
 # define M_PI 3.14159265358979323846
-# define MOVE 6
+# define MOVE 2
 
 typedef struct s_alloc
 {
@@ -163,8 +163,6 @@ int					ft_strchr(char *s, int c);
 
 //	parsing functions
 char				**ft_split(char const *s, char c);
-void				free_double_ptr(char **split);
-void				free_split(char **array, size_t j);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(char *s1, char *s2);
 // void		ft_bzero(void *s, size_t n);

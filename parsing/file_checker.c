@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:26 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/01 18:56:18 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:51:24 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	handle_map_line(t_game *game, int *map_found, int i)
 static void	exit_with_error(char *msg, char *line)
 {
 	perror(msg);
-	free(line);
+	ft_malloc(0, FREE);
 	exit(1);
 }
 
@@ -76,12 +76,13 @@ void	number_of_lines(t_game *game)
 		i++;
 		game->number_lines++;
 		process_line(game, line, &map_found, i);
-		free(line);
 		line = get_next_line(game->fd);
 	}
 	if (game->line_map == 0)
 	{
 		perror("Error\nNo map provided\n");
+		close(game->fd);
+		ft_malloc(0, FREE);
 		exit(0);
 	}
 	lseek(game->fd, 0, SEEK_SET);
