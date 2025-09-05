@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/05 15:53:29 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:10:46 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ int	main(int ac, char *av[])
 
 	game = ft_malloc(sizeof(t_game), ALLOC);
 	if (parsing(game, ac, av) == 1)
-		return (1);
+		return (ft_malloc(0, FREE), 1);
 	data = ft_malloc(sizeof(t_cube), ALLOC);
 	data->game = game;
-	if (parsing(game, ac, av) == 1)
-		ft_exit(data);
 	initialize(data);
 	render_all(data);
 	mlx_hook(data->win, 17, 0, ft_exit, data);
