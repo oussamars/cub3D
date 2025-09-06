@@ -6,13 +6,13 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:52:11 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/05 17:55:54 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/06 10:11:51 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	draw_rectangle(t_cube *data, int pos_drawing_x, int pos_drawing_y,
+void	draw_minimap_tile(t_cube *data, int pos_drawing_x, int pos_drawing_y,
 		int color)
 {
 	int	i;
@@ -66,7 +66,7 @@ void	draw_player(t_cube *data, int pos_drawing_x, int pos_drawing_y,
 	}
 }
 
-void	draw_mini_map(t_cube *data, int j, int map_j, int start_i)
+void	draw_minimap_row(t_cube *data, int j, int map_j, int start_i)
 {
 	int (i), (map_i), (draw_x), (draw_y);
 	i = 0;
@@ -78,12 +78,12 @@ void	draw_mini_map(t_cube *data, int j, int map_j, int start_i)
 		if (map_i >= 0 && map_i < (int)ft_strlen(data->map[map_j]))
 		{
 			if (player_or_zero(data->map[map_j][map_i]) == 1)
-				draw_rectangle(data, draw_x, draw_y, 0xFFFFFF);
+				draw_minimap_tile(data, draw_x, draw_y, 0xFFFFFF);
 			else
-				draw_rectangle(data, draw_x, draw_y, 0x000000);
+				draw_minimap_tile(data, draw_x, draw_y, 0x000000);
 		}
 		else
-			draw_rectangle(data, draw_x, draw_y, 0x333333);
+			draw_minimap_tile(data, draw_x, draw_y, 0x333333);
 		i++;
 	}
 }
@@ -99,7 +99,7 @@ static void	draw_out_of_bounds_row(t_cube *data, int j)
 	{
 		draw_x = i * 12;
 		draw_y = j * 12;
-		draw_rectangle(data, draw_x, draw_y, 0x333333);
+		draw_minimap_tile(data, draw_x, draw_y, 0x333333);
 		i++;
 	}
 }
@@ -118,7 +118,7 @@ void	mini_map(t_cube *data)
 	{
 		map_j = start_j + j;
 		if (map_j >= 0 && map_j < data->height)
-			draw_mini_map(data, j, map_j, start_i);
+			draw_minimap_row(data, j, map_j, start_i);
 		else
 			draw_out_of_bounds_row(data, j);
 		j++;
