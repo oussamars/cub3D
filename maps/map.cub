@@ -1,12 +1,12 @@
-NO  textures/east_wall.xpm
-SO  textures/east_wall.xpm
-WE  textures/east_wall.xpm
-EA  textures/east_wall.xpm
-F 220,100,0
-C 225,30,0
+NO  textures/N.xpm
+SO  textures/SP_HOT2.xpm
+WE  textures/SP_HOT3.xpm
+EA  textures/W.xpm
+F 0,0,0
+C 0,0,0
 
         1111111111111111111111111
-        1000000000110000000000001
+        100000000110000000000001
         1011000001110000000000001
         100100000000000000000001
 11111111101100000111000000000001

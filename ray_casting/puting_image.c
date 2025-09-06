@@ -101,7 +101,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:13:46 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/04 10:28:31 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 09:33:27 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ void	draw_wall(t_cube *data, double angle, int x)
 	{
 		if (i >= top && i <= (WIN_HEIGHT / 2) + (data->wallstriph / 2))
 		{
-			tex_y = (i - top) * (TEXTURE_TILE / data->wallstriph);
+			tex_y = (i - top) * (data->t_text.height[data->t_text.index]
+					/ data->wallstriph);
 			color = get_color(data, data->t_text.index, data->t_text.tex_x,
 					tex_y);
 			my_pixel_put(data, x, i, color);
@@ -174,5 +175,4 @@ void	render_all(t_cube *data)
 			&data->endian);
 	draw_fov(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mini_map(data);
 }

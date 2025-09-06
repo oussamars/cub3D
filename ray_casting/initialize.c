@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:12:43 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/04 10:27:10 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/06 10:23:28 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,15 @@ void	load_texture_address(t_cube *data)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	if (!data->t_text.textures[0] || !data->t_text.textures[1]
+		|| !data->t_text.textures[2] || !data->t_text.textures[3]
+		|| !data->t_text.textures[4] || !data->t_text.textures[5])
+	{
+		write(2, "Error\nloading texture failure\n", 31);
+		ft_exit(data);
+	}
+	data->t_text.textures[6] = NULL;
+	while (i < 6)
 	{
 		data->t_text.addr[i] = mlx_get_data_addr(data->t_text.textures[i],
 				&data->t_text.bpp[i], &data->t_text.len[i],
@@ -40,10 +48,12 @@ void	load_textures(t_cube *data)
 	data->t_text.textures[3] = mlx_xpm_file_to_image(data->mlx,
 			data->game->west_texture, &data->t_text.width[3],
 			&data->t_text.height[3]);
-	if (!data->t_text.textures[0] || !data->t_text.textures[1]
-		|| !data->t_text.textures[2] || !data->t_text.textures[3])
-		ft_exit(data);
-	data->t_text.textures[4] = NULL;
+	data->t_text.textures[4] = mlx_xpm_file_to_image(data->mlx,
+			"textures/anim_0.xpm", &data->t_text.width[4],
+			&data->t_text.height[4]);
+	data->t_text.textures[5] = mlx_xpm_file_to_image(data->mlx,
+			"textures/sky.xpm", &data->t_text.width[5],
+			&data->t_text.height[5]);
 	load_texture_address(data);
 }
 
@@ -75,6 +85,6 @@ void	initialize(t_cube *data)
 	data->r_speed = 0.5 * (M_PI / 180);
 	data->dis = ft_malloc(sizeof(t_dis_tools), ALLOC);
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
 	load_textures(data);
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
 }

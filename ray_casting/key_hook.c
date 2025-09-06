@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:57:59 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/04 10:04:11 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/05 09:53:26 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	key_press(int key, void *ptr)
 	data = (t_cube *)ptr;
 	if (key == XK_Escape)
 		ft_exit(data);
+	if (key == XK_space)
+		data->key.space = TRUE;
 	if (key == XK_Right)
 		data->key.rotate_right = TRUE;
 	if (key == XK_Left)
@@ -55,6 +57,8 @@ int	key_release(int key, void *ptr)
 	t_cube	*data;
 
 	data = (t_cube *)ptr;
+	if (key == XK_space)
+		data->key.space = FALSE;
 	if (key == XK_Right)
 		data->key.rotate_right = FALSE;
 	if (key == XK_Left)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/05 16:00:38 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:32:29 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@
 # define TILE 60
 # define TRUE 1
 # define FALSE 0
-# define WIN_WIDTH 1000
+# define WIN_WIDTH 1200
 # define WIN_HEIGHT 600
-# define TEXTURE_TILE 256
 # define HORZ 1
 # define VERT 0
 # define ERROR -1
@@ -81,19 +80,31 @@ typedef struct s_dis_tools
 
 typedef struct s_texture
 {
-	void			*textures[5];
-	char			*addr[4];
-	int				width[4];
-	int				height[4];
-	int				endian[4];
-	int				len[4];
-	int				bpp[4];
+	void			*textures[7];
+	char			*addr[6];
+	int				width[6];
+	int				height[6];
+	int				endian[6];
+	int				len[6];
+	int				bpp[6];
 	int				tex_x;
 	int				index;
 }					t_texture;
 
+typedef struct s_animat
+{
+	void			*textures[5];
+	char			*addr;
+	int				endian;
+	int				width;
+	int				height;
+	int				len;
+	int				bpp;
+}					t_animat;
+
 typedef struct s_keys
 {
+	int				space;
 	int				rotate_right;
 	int				rotate_left;
 	int				right;
@@ -108,6 +119,7 @@ typedef struct s_cube
 	t_game			*game;
 	t_texture		t_text;
 	t_keys			key;
+	t_animat		anim;
 	double			wallstriph;
 	double			r_speed;
 	double			walldis;
@@ -137,12 +149,13 @@ void				draw_fov(t_cube *data);
 void				wallstripheight(t_cube *data, double angle);
 void				find_distance(t_cube *data, double angle);
 void				get_texture_info(t_cube *data, double angle);
+void				put_gun(t_cube *data);
+void				draw_sky(t_cube *data);
 double				normalizeangle(double angle);
 double				distance(t_cube *data);
 unsigned int		get_color(t_cube *data, int index, int tex_x, int tex_y);
 int					key_check(void *ptr);
 int					colision(t_cube *data, int px, int py);
-int					render_ddmap(t_cube *data);
 int					index_tex(t_cube *data, double angle);
 int					ft_exit(t_cube *data);
 int					lookup(double angle);
@@ -151,6 +164,7 @@ int					right(double angle);
 int					left(double angle);
 int					key_press(int key, void *data);
 int					key_release(int key, void *data);
+int					mouse_func(t_cube *data);
 // gnl functions!!
 
 void				ft_bzero(void *address, size_t len);

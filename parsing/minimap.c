@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:52:11 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/06 10:11:51 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:31:24 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ void	draw_minimap_tile(t_cube *data, int pos_drawing_x, int pos_drawing_y,
 		i = 0;
 		while (i < 12)
 		{
-			if (j == 0 && color == 0x000000)
-				mlx_pixel_put(data->mlx, data->win, pos_drawing_x + i,
-					pos_drawing_y + j, 0xFFFFFF);
-			else if (i == 0 && color == 0x000000)
+			if ((j == 0 || i == 0) && color == 0x000000)
 				mlx_pixel_put(data->mlx, data->win, pos_drawing_x + i,
 					pos_drawing_y + j, 0xFFFFFF);
 			else
