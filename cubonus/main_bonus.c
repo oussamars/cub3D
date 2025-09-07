@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/07 09:34:24 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:45:08 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	parsing(t_game *game, int ac, char **av)
 {
 	if (ac != 2)
-		return (perror("Error\nYou should have the right parameters\n"), 1);
+		return (write(2, "Error\nYou should have the right parameters\n", 44),
+			1);
 	if (check_file_name(av[1]) == 1)
 		return (1);
 	initialize_struct(game, av[1]);

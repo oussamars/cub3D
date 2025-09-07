@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/07 10:26:33 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:37:20 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int ac, char *av[])
 	t_game	*game;
 
 	if (ac != 2)
-		return (perror("Error\nYou should have the right parameters\n"), 1);
+		return (write(2, "Error\nYou should have the right parameters\n", 44),
+			1);
 	if (check_file_name(av[1]) == 1)
 		return (1);
 	game = ft_malloc(sizeof(t_game), ALLOC);

@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:52:26 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/05 17:44:19 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:38:06 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	check_characters(t_game *game)
 		i++;
 	}
 	if (count_orientation_caracter != 1)
-		return (perror("Error\nOrientation character\n"), 1);
+		return (write(2, "Error\nOrientation character\n", 28), 1);
 	return (0);
 }
 
@@ -75,7 +75,7 @@ int	open_file(t_game *game)
 	game->fd = open(game->map_file_name, O_RDONLY);
 	if (game->fd < 0)
 	{
-		perror("Error\nOpening the map file\n");
+		write(2, "Error\nOpening the map file\n", 28);
 		return (1);
 	}
 	return (0);

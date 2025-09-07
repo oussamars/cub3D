@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:26 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/05 16:53:48 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:47:25 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	handle_map_line(t_game *game, int *map_found, int i)
 
 static void	exit_with_error(char *msg)
 {
-	perror(msg);
+	write(2, msg, ft_strlen(msg));
 	ft_malloc(0, FREE);
 	exit(1);
 }
@@ -79,7 +79,7 @@ void	number_of_lines(t_game *game)
 	}
 	if (game->line_map == 0)
 	{
-		perror("Error\nNo map provided\n");
+		write(2, "Error\nNo map provided\n", 23);
 		close(game->fd);
 		ft_malloc(0, FREE);
 		exit(0);

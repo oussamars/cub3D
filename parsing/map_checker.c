@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:03:32 by oboussel          #+#    #+#             */
-/*   Updated: 2025/09/05 16:10:57 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:43:46 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_empty_lines_map(t_game *game)
 	while (game->map[i])
 	{
 		if (game->map[i][0] == '\0')
-			return (perror("Error\nEmpty line in the map\n"), 1);
+			return (write(2, "Error\nEmpty line in the map\n", 29), 1);
 		i++;
 	}
 	return (0);
@@ -38,14 +38,14 @@ int	check_holes(t_game *game, int i, int j)
 			{
 				if (i == 0 || j >= (int)ft_strlen(game->map[i - 1])
 					|| game->map[i - 1][j] == ' ')
-					return (perror("Error\nMap is not closed\n"), 1);
+					return (write(2, "Error\nMap is not closed\n", 25), 1);
 				if (game->map[i + 1] == NULL || j >= (int)ft_strlen(game->map[i
 							+ 1]) || game->map[i + 1][j] == ' ')
-					return (perror("Error\nMap is not closed\n"), 1);
+					return (write(2, "Error\nMap is not closed\n", 25), 1);
 				if (j == 0 || game->map[i][j - 1] == ' ')
-					return (perror("Error\nMap is not closed\n"), 1);
+					return (write(2, "Error\nMap is not closed\n", 25), 1);
 				if (game->map[i][j + 1] == '\0' || game->map[i][j + 1] == ' ')
-					return (perror("Error\nMap is not closed\n"), 1);
+					return (write(2, "Error\nMap is not closed\n", 25), 1);
 			}
 			j++;
 		}
@@ -62,14 +62,14 @@ int	check_first_last_row(t_game *game, int last_row)
 	while (game->map[0][i])
 	{
 		if (game->map[0][i] != '1' && game->map[0][i] != ' ')
-			return (perror("Error\nMap not surrounded by walls\n"), 1);
+			return (write(2, "Error\nMap not surrounded by walls\n", 35), 1);
 		i++;
 	}
 	i = 0;
 	while (game->map[last_row][i])
 	{
 		if (game->map[last_row][i] != '1' && game->map[last_row][i] != ' ')
-			return (perror("Error\nMap not surrounded by walls\n"), 1);
+			return (write(2, "Error\nMap not surrounded by walls\n", 35), 1);
 		i++;
 	}
 	return (0);
@@ -90,7 +90,7 @@ int	check_surrounded_walls(t_game *game)
 	while (game->map[i])
 	{
 		if (game->map[i][0] != '1' && game->map[i][0] != ' ')
-			return (perror("Error\nMap not surrounded by walls\n"), 1);
+			return (write(2, "Error\nMap not surrounded by walls\n", 35), 1);
 		i++;
 	}
 	i = 0;
@@ -98,7 +98,7 @@ int	check_surrounded_walls(t_game *game)
 	{
 		if (game->map[i][ft_strlen(game->map[i]) - 1] != '1'
 			&& game->map[i][ft_strlen(game->map[i]) - 1] != ' ')
-			return (perror("Error\nMap not surrounded by walls\n"), 1);
+			return (write(2, "Error\nMap not surrounded by walls\n", 35), 1);
 		i++;
 	}
 	return (0);
