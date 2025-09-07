@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:57:59 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/06 10:57:57 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/07 09:40:01 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ int	key_release(int key, void *ptr)
 
 int	mouse_func(t_cube *data)
 {
-	int			x;
 	int			y;
-	static int	previous;
 	int			dx;
+	static int	previous;
 
+	int (x), (a);
+	while (a < 10)
+		a++;
 	mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
 	if (!(x > WIN_WIDTH || x < 0) && !(y > WIN_HEIGHT || y < 0))
 	{

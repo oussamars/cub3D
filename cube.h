@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/06 13:32:29 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/06 16:36:39 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define TILE 60
 # define TRUE 1
 # define FALSE 0
-# define WIN_WIDTH 1200
+# define WIN_WIDTH 1400
 # define WIN_HEIGHT 600
 # define HORZ 1
 # define VERT 0
@@ -80,13 +80,13 @@ typedef struct s_dis_tools
 
 typedef struct s_texture
 {
-	void			*textures[7];
-	char			*addr[6];
-	int				width[6];
-	int				height[6];
-	int				endian[6];
-	int				len[6];
-	int				bpp[6];
+	void			*textures[10];
+	char			*addr[9];
+	int				width[9];
+	int				height[9];
+	int				endian[9];
+	int				len[9];
+	int				bpp[9];
 	int				tex_x;
 	int				index;
 }					t_texture;
@@ -127,6 +127,7 @@ typedef struct s_cube
 	double			fov;
 	double			px;
 	double			py;
+	int				gun_index;
 	int				hit_check;
 	int				line_len;
 	int				endian;

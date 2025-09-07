@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_check.c                                        :+:      :+:    :+:   */
+/*   key_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:13:00 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/05 09:47:35 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/06 16:15:57 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	up_down(t_cube *data, double *x, double *y)
 {
+	int	gun;
+
+	gun = 0;
 	if (data->key.up == TRUE)
 	{
 		*(x) += (MOVE * cos(data->angle));
@@ -23,6 +26,17 @@ void	up_down(t_cube *data, double *x, double *y)
 	{
 		*(x) -= (MOVE * cos(data->angle));
 		*(y) -= (MOVE * sin(data->angle));
+	}
+	if (data->key.space == TRUE)
+	{
+		while (gun < 4)
+		{
+			data->gun_index = 5 + gun;
+			render_all(data);
+			gun++;
+		}
+		data->gun_index = 5;
+		render_all(data);
 	}
 }
 

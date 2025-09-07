@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:12:43 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/06 10:23:28 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/06 16:18:05 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,37 @@ void	load_texture_address(t_cube *data)
 	i = 0;
 	if (!data->t_text.textures[0] || !data->t_text.textures[1]
 		|| !data->t_text.textures[2] || !data->t_text.textures[3]
-		|| !data->t_text.textures[4] || !data->t_text.textures[5])
+		|| !data->t_text.textures[4] || !data->t_text.textures[5]
+		|| !data->t_text.textures[6] || !data->t_text.textures[7]
+		|| !data->t_text.textures[8])
 	{
 		write(2, "Error\nloading texture failure\n", 31);
 		ft_exit(data);
 	}
-	data->t_text.textures[6] = NULL;
-	while (i < 6)
+	data->t_text.textures[9] = NULL;
+	while (i < 9)
 	{
 		data->t_text.addr[i] = mlx_get_data_addr(data->t_text.textures[i],
 				&data->t_text.bpp[i], &data->t_text.len[i],
 				&data->t_text.endian[i]);
 		i++;
 	}
+}
+
+void	load_gun_textures(t_cube *data)
+{
+	data->t_text.textures[5] = mlx_xpm_file_to_image(data->mlx,
+			"textures/anim_0.xpm", &data->t_text.width[5],
+			&data->t_text.height[5]);
+	data->t_text.textures[6] = mlx_xpm_file_to_image(data->mlx,
+			"textures/anim_1.xpm", &data->t_text.width[6],
+			&data->t_text.height[6]);
+	data->t_text.textures[7] = mlx_xpm_file_to_image(data->mlx,
+			"textures/anim_2.xpm", &data->t_text.width[7],
+			&data->t_text.height[7]);
+	data->t_text.textures[8] = mlx_xpm_file_to_image(data->mlx,
+			"textures/anim_3.xpm", &data->t_text.width[8],
+			&data->t_text.height[8]);
 }
 
 void	load_textures(t_cube *data)
@@ -49,11 +67,9 @@ void	load_textures(t_cube *data)
 			data->game->west_texture, &data->t_text.width[3],
 			&data->t_text.height[3]);
 	data->t_text.textures[4] = mlx_xpm_file_to_image(data->mlx,
-			"textures/anim_0.xpm", &data->t_text.width[4],
+			"textures/red_sky-_1_.xpm", &data->t_text.width[4],
 			&data->t_text.height[4]);
-	data->t_text.textures[5] = mlx_xpm_file_to_image(data->mlx,
-			"textures/sky.xpm", &data->t_text.width[5],
-			&data->t_text.height[5]);
+	load_gun_textures(data);
 	load_texture_address(data);
 }
 
@@ -78,11 +94,12 @@ void	initialize(t_cube *data)
 	while (data->map[data->height])
 		data->height++;
 	data->height--;
+	data->gun_index = 5;
 	data->fov = 60 * (M_PI / 180);
 	data->angle = angle_direction(data->game->orientation_character);
 	data->px = data->game->player_x * TILE;
 	data->py = data->game->player_y * TILE;
-	data->r_speed = 0.5 * (M_PI / 180);
+	data->r_speed = 0.7 * (M_PI / 180);
 	data->dis = ft_malloc(sizeof(t_dis_tools), ALLOC);
 	data->mlx = mlx_init();
 	load_textures(data);
