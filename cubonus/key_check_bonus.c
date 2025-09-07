@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:13:00 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/06 16:15:57 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:21:05 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int	key_check(void *ptr)
 	x = data->px;
 	y = data->py;
 	angle = data->angle;
-	mouse_func(data);
 	check_keys(data, &x, &y);
-	if (data->px == x && data->py == y && angle == data->angle)
-		return (0);
 	if (colision(data, x, y) != -1)
 	{
 		data->px = x;

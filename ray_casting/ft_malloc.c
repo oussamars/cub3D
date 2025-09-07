@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:29 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/01 10:46:43 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:31:33 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	*ft_malloc(size_t bytes, int action)
 	{
 		alloc = calloc(bytes, 1);
 		if (!alloc)
+		{
+			write(2, "Error\nallocation failure\n", 26);
 			ft_malloc(0, FREE);
+		}
 		add_alloc(&head, alloc);
 		return (alloc);
 	}

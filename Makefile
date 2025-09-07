@@ -47,7 +47,7 @@ B_SRCS = cubonus/main_bonus.c \
 		parsing/read_map.c \
 		parsing/minimap.c
 
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 OBJS = $(SRCS:.c=.o)
 B_OBJS = $(B_SRCS:.c=.o)
 NAME = cube

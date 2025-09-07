@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/07 10:45:08 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:25:48 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	main(int ac, char *av[])
 	mlx_hook(data->win, 17, 0, ft_exit, data);
 	mlx_hook(data->win, 2, 1L << 0, key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, key_release, data);
-	mlx_hook(data->win, 6, 0, mouse_func, data);
+	mlx_hook(data->win, 6, 1L << 6, mouse_func, data);
 	mlx_loop_hook(data->mlx, key_check, data);
-	mlx_mouse_hide(data->mlx, data->win);
 	mlx_loop(data->mlx);
 }

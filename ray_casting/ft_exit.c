@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:56:09 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/07 10:26:16 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 11:48:35 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	destroy_textures(t_cube *data)
 	int	i;
 
 	i = 0;
-	while (data->t_text.textures[i])
-		mlx_destroy_image(data->mlx, data->t_text.textures[i++]);
+	while (i < 9)
+	{
+		if (data->t_text.textures[i])
+			mlx_destroy_image(data->mlx, data->t_text.textures[i++]);
+	}
 }
 
 void	free_map(char **map)

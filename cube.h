@@ -6,7 +6,7 @@
 /*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:15:13 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/06 16:36:39 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/07 13:29:22 by imeftah-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define ALLOC 0
 # define BUFFER_SIZE 10
 # define M_PI 3.14159265358979323846
-# define MOVE 2
+# define MOVE 8
 
 typedef struct s_alloc
 {
@@ -165,7 +165,7 @@ int					right(double angle);
 int					left(double angle);
 int					key_press(int key, void *data);
 int					key_release(int key, void *data);
-int					mouse_func(t_cube *data);
+int					mouse_func(int x, int y, t_cube *data);
 // gnl functions!!
 
 void				ft_bzero(void *address, size_t len);
