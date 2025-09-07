@@ -6,7 +6,7 @@
 /*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:56:09 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/05 16:01:41 by oboussel         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:26:16 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,19 @@ void	free_map(char **map)
 
 int	ft_exit(t_cube *data)
 {
-	if (data->mlx)
+	if (data != NULL)
 	{
-		if (data->img)
-			mlx_destroy_image(data->mlx, data->img);
-		destroy_textures(data);
-		if (data->win)
-			mlx_destroy_window(data->mlx, data->win);
-		mlx_destroy_display(data->mlx);
+		if (data->mlx)
+		{
+			if (data->img)
+				mlx_destroy_image(data->mlx, data->img);
+			destroy_textures(data);
+			if (data->win)
+				mlx_destroy_window(data->mlx, data->win);
+			mlx_destroy_display(data->mlx);
+			free(data->mlx);
+		}
 	}
-	free(data->mlx);
 	ft_malloc(0, FREE);
 	exit(errno);
 	return (0);

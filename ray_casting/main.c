@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeftah- <imeftah-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oboussel <oboussel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 10:11:54 by imeftah-          #+#    #+#             */
-/*   Updated: 2025/09/06 13:31:50 by imeftah-         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:26:33 by oboussel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-int	parsing(t_game *game, int ac, char **av)
+int	parsing(t_game *game, char **av)
 {
-	if (ac != 2)
-		return (perror("Error\nYou should have the right parameters\n"), 1);
-	if (check_file_name(av[1]) == 1)
-		return (1);
 	initialize_struct(game, av[1]);
 	if (pars_map(game) == 1)
 		return (close(game->fd), 1);
@@ -30,9 +26,13 @@ int	main(int ac, char *av[])
 	t_cube	*data;
 	t_game	*game;
 
-	game = ft_malloc(sizeof(t_game), ALLOC);
-	if (parsing(game, ac, av) == 1)
+	if (ac != 2)
+		return (perror("Error\nYou should have the right parameters\n"), 1);
+	if (check_file_name(av[1]) == 1)
 		return (1);
+	game = ft_malloc(sizeof(t_game), ALLOC);
+	if (parsing(game, av) == 1)
+		return (ft_exit(NULL), 1);
 	data = ft_malloc(sizeof(t_cube), ALLOC);
 	data->game = game;
 	initialize(data);
